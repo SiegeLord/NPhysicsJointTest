@@ -22,7 +22,7 @@ use gnuplot::*;
 fn main()
 {
 	let v_high = 1.;
-	let v_low = -1.;
+	let v_low = 1.;
 
 	let mut mechanical_world = DefaultMechanicalWorld::new(Vector3::new(0., 0., 0.));
 	let mut geometrical_world = DefaultGeometricalWorld::new();
@@ -104,4 +104,5 @@ fn main()
 		.lines(0..100, &angles_vs_time[1], &[Caption("angle high")])
 		.lines(0..100, &angles_vs_time[2], &[Caption("angle low")]);
 	fg.show().unwrap();
+	fg.save_to_svg(&format!("v_high_{}_v_low_{}.png", v_high, v_low), 800, 600).unwrap();
 }
